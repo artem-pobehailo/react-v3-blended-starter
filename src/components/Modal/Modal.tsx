@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import styled from "./Modal.module.css";
 import { createPortal } from "react-dom";
 
