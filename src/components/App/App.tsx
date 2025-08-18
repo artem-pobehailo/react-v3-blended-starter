@@ -30,12 +30,19 @@ export default function App() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    setIsEditPost(true);
-    setIsModalOpen(true);
   };
 
   const handleEdit = (post: Post) => {
     setEditPost(post);
+    setIsEditPost(true);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setEditPost(null);
+    setIsEditPost(false);
+    setIsModalOpen(false);
+    setIsCreate(false);
   };
 
   const handleChange = useDebouncedCallback((event: ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +59,9 @@ export default function App() {
       </header>
       {isModalOpen && (
         <Modal>
-          {isCreate && <PostForm />}
-          {isEditPost && editPost && <EditPostForm initialValues={editPost} />}
+          {isEditPost && editPost && (
+            <EditPostForm initialValues={editPost} onClose={handleCloseModal} />
+          )}
         </Modal>
       )}
       {data && data?.posts.length > 0 && <PostList posts={data.posts} handleEdit={handleEdit} />}

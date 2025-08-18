@@ -28,6 +28,9 @@ export const fetchPosts = async (
 
 // export const createPost = async (newPost) => {};
 
-// export const editPost = async (newDataPost) => {};
+export const editPost = async (newDataPost: Post) => {
+  const { data } = await axios.patch<Post>("/posts/${ newDatapost.id }", newDataPost);
+  return data;
+};
 
 // export const deletePost = async (postId) => {};
