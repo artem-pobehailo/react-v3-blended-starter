@@ -3,9 +3,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import css from "./EditPostForm.module.css";
 
-export default function EditPostForm() {
+export default function EditPostForm({ initialValues }) {
   return (
-    <Formik initialValues={} onSubmit={} validationSchema={}>
+    <Formik initialValues={initialValues} onSubmit={} validationSchema={}>
       <Form className={css.form}>
         <div className={css.formGroup}>
           <label htmlFor="title">Title</label>
